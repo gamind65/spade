@@ -1,11 +1,11 @@
 verbose: true
 raw_data_input_type: type1
 data_paths:
-  dev: funsd/dev/dev_type1.jsonl
+  dev: /kaggle/input/vietnamese-receipts-mc-ocr-2021/mcocr_val_sample_df.csv
   op_dev: null
   op_test: null
   test: funsd/test/test_type1.jsonl
-  train: funsd/train/train_type1.jsonl
+  train: /kaggle/input/vietnamese-receipts-mc-ocr-2021/mcocr_train_df.csv
 dist_norm: img_diagonal
 infer_param:
   allow_small_edit_distance: false
@@ -33,14 +33,15 @@ model_param:
     - -1
   #  examples_of_infering_method: force_single_tail_node, force_single_tail_node_but_allow_multiple_seeds,  no_constraint
   field_representers:
-    - qa.question
-    - header.header
-    - other.other
+    - SELLER
+    - ADDRESS
+    - TIMESTAMP
+    - TOTAL_COST
   fields:
-    - qa.question
-    - qa.answer
-    - header.header
-    - other.other
+    - SELLER
+    - ADDRESS
+    - TIMESTAMP
+    - TOTAL_COST
   include_second_order_relations: false
   inferring_method:
     - force_single_tail_node_but_allow_multiple_seeds
