@@ -1,11 +1,11 @@
 verbose: true
 raw_data_input_type: type1
 data_paths:
-  dev: receipt_ind_cord_v0.1/dev/dev_type1.jsonl
+  dev: /kaggle/input/vietnamese-receipts-mc-ocr-2021/mcocr_val_sample_df.csv
   op_dev: receipt_ind_cord_v0.1/dev/op_dev_type1.jsonl
   op_test: receipt_ind_cord_v0.1/test/op_test_type1.jsonl
   test: receipt_ind_cord_v0.1/test/test_type1.jsonl
-  train: receipt_ind_cord_v0.1/train/train_type1.jsonl
+  train: /kaggle/input/vietnamese-receipts-mc-ocr-2021/mcocr_train_df.csv
 dist_norm: img_diagonal
 infer_param:
   allow_small_edit_distance: true
@@ -33,53 +33,15 @@ model_param:
   #  examples_of_inffering_method: force_single_tail_node, force_single_tail_node_but_allow_multiple_seeds,  no_constraint
   #  examples_of_parse_gen_method: multiple_beam, single_beam
   field_representers:
-    - menu.nm
-    - sub_total.subtotal_price
-    - total.total_price
-    - void_menu.nm
-    - void_total.total_price
+    - SELLER
+    - ADDRESS
+    - TIMESTAMP
+    - TOTAL_COST
   fields:
-    - menu.cnt
-    - menu.discountprice
-    - menu.itemsubtotal
-    - menu.nm
-    - menu.price
-    - menu.sub_cnt
-    - menu.sub_nm
-    - menu.sub_price
-    - menu.unitprice
-    - menu.sub_num
-    - menu.discountprice
-    - menu.num
-    - menu.sub_discountprice
-    - menu.sub_etc
-    - menu.etc
-    - menu.vatyn
-    - menu.itemsubtotal
-    - menu.sub_unitprice
-    - sub_total.discount_price
-    - sub_total.service_price
-    - sub_total.subtotal_price
-    - sub_total.tax_price
-    - sub_total.tax_and_service
-    - sub_total.etc
-    - sub_total.othersvc_price
-    - total.total_price
-    - total.menuqty_cnt
-    - total.total_etc
-    - total.emoneyprice
-    - total.menutype_cnt
-    - total.cashprice
-    - total.changeprice
-    - total.creditcardprice
-    - void_menu.nm
-    - void_menu.cnt
-    - void_menu.price
-    - void_menu.unitprice
-    - void_total.total_price
-    - void_total.subtotal_price
-    - void_total.tax_price
-    - void_total.etc
+    - SELLER
+    - ADDRESS
+    - TIMESTAMP
+    - TOTAL_COST
 
   gt_parse_gen_method: single_beam
   include_second_order_relations: false
