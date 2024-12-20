@@ -13,6 +13,7 @@ from pathlib import Path
 import torch
 import yaml
 
+import pandas as pd
 
 def remove_duplicate_in_1d_list(data_in: list):
     assert type(data_in) == list
@@ -50,8 +51,20 @@ def load_yaml(filepath):
 
 
 def load_jsonl(filepath, toy_data=False, toy_size=4, shuffle=False):
+    df = pd.read_csv(filepath)
+    
+    file_to_write = ""
+    for index in df.index:
+        df.loc[index].to_json("row{}.json".format(index))
+        with open("row{}.json".format(index)) as file_handle:
+            file_content = file_handle.read()
+            file_to_write += file_content + "\n"
+            
+    with open("result.jsonl","w") as file_handle:
+        file_handle.write(file_to_write)
+        
     data = []
-    with open(filepath, "r", encoding="utf-8") as f:
+    with open("result.jsonl", "r", encoding="utf-8") as f:
         for idx, line in enumerate(f):
             if toy_data and idx >= toy_size:
                 break
