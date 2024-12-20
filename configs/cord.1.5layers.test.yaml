@@ -1,11 +1,11 @@
 verbose: true
 raw_data_input_type: type1
 data_paths:
-  dev: receipt_ind_cord_v0.1/dev/dev_type1.jsonl
+  dev: /kaggle/input/vietnamese-receipts-mc-ocr-2021/mcocr_val_sample_df.csv
   op_dev: receipt_ind_cord_v0.1/dev/op_dev_type1.jsonl
   op_test: receipt_ind_cord_v0.1/test/op_test_type1.jsonl
   test: receipt_ind_cord_v0.1/test/test_type1.jsonl
-  train: receipt_ind_cord_v0.1/train/train_type1.jsonl
+  train: /kaggle/input/vietnamese-receipts-mc-ocr-2021/mcocr_train_df.csv
 dist_norm: img_diagonal
 infer_param:
   allow_small_edit_distance: true
